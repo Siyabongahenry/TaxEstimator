@@ -1,0 +1,6 @@
+.home-links-block[b-rimxk5uk5m] {
+    background-color: var(--theme-color);
+}
+.home-links-block:hover[b-rimxk5uk5m]{
+    background-color:var(--bs-primary);
+}

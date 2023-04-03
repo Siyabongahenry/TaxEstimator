@@ -1,0 +1,6 @@
+﻿.home-links-block {
+    background-color: var(--theme-color);
+}
+.home-links-block:hover{
+    background-color:var(--bs-primary);
+}

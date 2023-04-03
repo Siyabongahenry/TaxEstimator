@@ -1,0 +1,93 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = TaxEstimator
+build_property.RootNamespace = TaxEstimator
+build_property.ProjectDir = C:\Users\lenovo\Desktop\TaxEstimator\TaxEstimator\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\lenovo\Desktop\TaxEstimator\TaxEstimator
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/lenovo/Desktop/TaxEstimator/TaxEstimator/Areas/Identity/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lenovo/Desktop/TaxEstimator/TaxEstimator/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lenovo/Desktop/TaxEstimator/TaxEstimator/Views/IncomeCalculator/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5jb21lQ2FsY3VsYXRvclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lenovo/Desktop/TaxEstimator/TaxEstimator/Views/IncomeCalculator/_ContributionPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5jb21lQ2FsY3VsYXRvclxfQ29udHJpYnV0aW9uUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lenovo/Desktop/TaxEstimator/TaxEstimator/Views/IncomeCalculator/_PaySlipPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5jb21lQ2FsY3VsYXRvclxfUGF5U2xpcFBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lenovo/Desktop/TaxEstimator/TaxEstimator/Views/PSfunds/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUFNmdW5kc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lenovo/Desktop/TaxEstimator/TaxEstimator/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lenovo/Desktop/TaxEstimator/TaxEstimator/Views/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lenovo/Desktop/TaxEstimator/TaxEstimator/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lenovo/Desktop/TaxEstimator/TaxEstimator/Views/TaxTables/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGF4VGFibGVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lenovo/Desktop/TaxEstimator/TaxEstimator/Views/TaxTables/_RebateTablePartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGF4VGFibGVzXF9SZWJhdGVUYWJsZVBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lenovo/Desktop/TaxEstimator/TaxEstimator/Views/TaxTables/_TaxBracketTablesPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGF4VGFibGVzXF9UYXhCcmFja2V0VGFibGVzUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lenovo/Desktop/TaxEstimator/TaxEstimator/Views/TaxTables/_ThresholdTablesPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGF4VGFibGVzXF9UaHJlc2hvbGRUYWJsZXNQYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lenovo/Desktop/TaxEstimator/TaxEstimator/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lenovo/Desktop/TaxEstimator/TaxEstimator/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lenovo/Desktop/TaxEstimator/TaxEstimator/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = b-rimxk5uk5m
+
+[C:/Users/lenovo/Desktop/TaxEstimator/TaxEstimator/Views/IncomeCalculator/_EmployeePartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5jb21lQ2FsY3VsYXRvclxfRW1wbG95ZWVQYXJ0aWFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = b-swk70twuet
+
+[C:/Users/lenovo/Desktop/TaxEstimator/TaxEstimator/Views/IncomeCalculator/_IncomePartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW5jb21lQ2FsY3VsYXRvclxfSW5jb21lUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = b-yvqw468yf7
+
+[C:/Users/lenovo/Desktop/TaxEstimator/TaxEstimator/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-xjjhk0xlad

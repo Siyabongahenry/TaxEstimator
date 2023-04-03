@@ -1,0 +1,27 @@
+﻿@model TaxEstimator.Models.IncomeInfo
+<div class="row text-center">
+    
+    <div class="col-6">
+        <input asp-for="Employee.FirstName" class="form-control m-1 border-0 border-bottom" placeholder="first name(optional)"/>
+    </div>
+    <div class="col-6">
+        <input asp-for="Employee.LastName" class="form-control m-1 border-0 border-bottom" placeholder="last name(ptional)" />
+    </div>
+    <div class="col-12">
+        <label class="text-left">Age</label>
+        <div class="text-center">
+            <div class="d-inline-block">
+                <input asp-for="Employee.Age" class="d-none" type="radio" value="0" id="age0" />
+                <label for="age0">Younger than 65 years</label>
+            </div>
+            <div class="d-inline-block">
+                <input asp-for="Employee.Age" class="d-none" type="radio" value="65" id="age65" />
+                <label for="age65">Between 65 and 75 years</label>
+            </div>
+            <div class="d-inline-block">
+                <input asp-for="Employee.Age" class="d-none" type="radio" value="75" id="age75" />
+                <label for="age75">Older than 75 years</label>
+            </div>
+        </div>
+    </div>
+</div>

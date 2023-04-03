@@ -1,0 +1,17 @@
+﻿input[type="radio"] + label {
+    display: inline-block;
+    border: 1px solid silver;
+    line-height: 40px;
+    font-size: 16px;
+    height: 40px;
+    text-align: center;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius: 20px;
+    margin: 4px;
+}
+
+input[type="radio"]:checked + label {
+    background-color: silver;
+    border-color:var(--theme-color);
+}

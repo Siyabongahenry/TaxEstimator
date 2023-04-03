@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="text-center p-2">
+    <div class="row bg-white">
+        <div class="col-12">
+            <h2 class="display-6 fw-bold">Available services</h2>
+        </div>
+        <div class="col-12 col-md-6 p-2">
+            <a class="shadow w-100 d-inline-block text-decoration-none text-white p-2 border border-4 bg-theme" asp-controller="IncomeCalculator" asp-action="Index">
+                <b>Tax Calculator </b>
+                <span class="d-block">Take Home Income</span>
+                <span class="d-block">Tax Deductions</span>
+                <span class="d-block">UIF Dections</span>
+                <small>(click/touch to open)</small>
+             </a>
+        </div>
+        <div class="col-12 col-md-6 p-2 bg-white">
+            <a class="home-links-block shadow w-100 d-inline-block text-decoration-none text-white p-2 border border-4 bg-theme" asp-controller="IncomeCalculator" asp-action="Index">
+                <b>Public Sector funds calculations</b>
+                <span class="d-block">Tax Deductions</span>
+                <span class="d-block">Widthrawals</span>
+                <span class="d-block">Transferss</span>
+                <small>(click/touch to open)</small>
+            </a>
+        </div>
+        <div class="col-12 col-md-6 p-2 bg-white">
+            <a class="home-links-block shadow w-100 d-inline-block text-decoration-none text-white p-2 border border-4 bg-theme" asp-controller="IncomeCalculator" asp-action="Index">
+                <b>Tax Tables</b>
+                <span class="d-block">Tax Brackets Table</span>
+                <span class="d-block">Rebates Table</span>
+                <span class="d-block">Thresholds Table</span>
+                <small>(click/touch to open)</small>
+            </a>
+        </div>
+    </div>
+</div>

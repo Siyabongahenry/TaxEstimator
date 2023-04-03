@@ -1,0 +1,30 @@
+
+:root {
+    --theme-color: #015289;
+}
+.bg-theme{
+    background-color:var(--theme-color);
+    color:white;
+}
+html {
+  font-size: 14px;
+}
+a:hover{
+    cursor:pointer;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+  background-color:#f3f3f3;
+}

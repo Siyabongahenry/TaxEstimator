@@ -1,0 +1,109 @@
+﻿@model TaxEstimator.Models.PaySlip
+
+<div class="" id="income-slip" style="font-size:11px">
+    <div class="d-inline-block bg-white" style="width:400px;padding-bottom:100px;border:2px solid #f3f3f3">
+        <h6 class="text-white p-2 m-2" style="background-color:silver;">For Employee (R)</h6>
+        <div class="text-end p-2">
+            <span class="text-end fw-bold d-inline-block" style="width:100px">
+                @Html.DisplayNameFor(item =>Model.Date)
+            </span>
+            <span id="TaxDate" class="d-inline-block text-start" style="width:100px">
+                @Html.DisplayFor(item =>Model.Date)
+            </span>
+        </div>
+        <div class="text-end p-2">
+            @Html.DisplayFor(item =>Model.IncomeInfo.Employee.FirstName)
+            &nbsp;
+            @Html.DisplayFor(item =>Model.IncomeInfo.Employee.LastName)
+        </div>
+        <div class="p-2 text-start">
+            <span class="fw-bold">
+                @Html.DisplayNameFor(item=>Model.Rebate)
+            </span>
+            <span id="TaxRebate" style="background-color:#f3f3f3;padding:2px;color:green;">
+                @Html.DisplayFor(item=>Model.Rebate)
+            </span>
+        </div>
+
+        <div class="w-100 p-2 text-start">
+            <span class="fw-bold">
+                @Html.DisplayNameFor(item=>Model.IncomeInfo.Income)
+            </span>
+            <span id="Income" style="background-color:#f3f3f3;padding:2px;">
+                @Html.DisplayFor(item=>Model.IncomeInfo.Income)
+            </span>
+        </div>
+        <table class="w-100">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="text-end">
+                        <span>
+                            @Html.DisplayNameFor(item=>Model.IncomeInfo.AnnualIncome)
+                        </span>
+                    </td>
+                    <td class="text-start" style="border-bottom:2px solid green;">
+                        <span id="AnnualIncome">
+                            @Html.DisplayFor(item =>Model.IncomeInfo.AnnualIncome)
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-end">
+                        <span>
+                            @Html.DisplayNameFor(item=>Model.PAYE)
+                        </span>
+                    </td>
+                    <td class="text-danger text-start">
+                        -<span id="MonthlyPAYE">
+                            @Html.DisplayFor(item=>Model.PAYE);
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-end">
+                        <span>
+                            @Html.DisplayNameFor(item=>Model.IncomeInfo.Contributions.UIF)
+                        </span>
+                    </td>
+                    <td class="text-danger text-start">
+                        -<span id="UIF">
+                            @Html.DisplayFor(item=>Model.IncomeInfo.Contributions.UIF)
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-end">
+                        <span>
+                            @Html.DisplayNameFor(item=>Model.IncomeInfo.Contributions.ProvidentFund)
+                        </span>
+                    </td>
+                    <td class="text-danger text-start">
+                        -<span id="UIF">
+                            @Html.DisplayFor(item=>Model.IncomeInfo.Contributions.ProvidentFund)
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td class="text-end">
+                        <span>
+                            @Html.DisplayNameFor(item=>Model.TakeHome)
+                        </span>
+                    </td>
+                    <td class="text-start" style="border-bottom: solid green;">
+                        <b id="TakeHomeIncome">
+                            @Html.DisplayFor(item=>Model.TakeHome)
+                        </b>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>

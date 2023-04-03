@@ -1,0 +1,78 @@
+/* _content/TaxEstimator/Views/Home/index.cshtml.rz.scp.css */
+.home-links-block[b-rimxk5uk5m] {
+    background-color: var(--theme-color);
+}
+.home-links-block:hover[b-rimxk5uk5m]{
+    background-color:var(--bs-primary);
+}
+/* _content/TaxEstimator/Views/IncomeCalculator/_EmployeePartial.cshtml.rz.scp.css */
+input[type="radio"] + label[b-swk70twuet] {
+    display: inline-block;
+    border: 1px solid silver;
+    line-height: 40px;
+    font-size: 16px;
+    height: 40px;
+    text-align: center;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius: 20px;
+    margin: 4px;
+}
+
+input[type="radio"]:checked + label[b-swk70twuet] {
+    background-color: silver;
+    border-color:var(--theme-color);
+}
+/* _content/TaxEstimator/Views/IncomeCalculator/_IncomePartial.cshtml.rz.scp.css */
+#contributionsCollapseBtn:focus[b-yvqw468yf7]{
+   outline:none;
+}
+/* _content/TaxEstimator/Views/Shared/_Layout.cshtml.rz.scp.css */
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand[b-xjjhk0xlad] {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+a[b-xjjhk0xlad] {
+  color: #0077cc;
+}
+
+.btn-primary[b-xjjhk0xlad] {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active[b-xjjhk0xlad], .nav-pills .show > .nav-link[b-xjjhk0xlad] {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.border-top[b-xjjhk0xlad] {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom[b-xjjhk0xlad] {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow[b-xjjhk0xlad] {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy[b-xjjhk0xlad] {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+.footer[b-xjjhk0xlad] {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px;
+}

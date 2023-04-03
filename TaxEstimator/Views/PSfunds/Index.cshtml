@@ -1,0 +1,78 @@
+﻿@model TaxEstimator.Models.PSFund;
+<div class="container bg-white pt-2 pb-2">
+    <h4 class="text-center bg-theme p-2 shadow">Public Sector funds Calculations</h4>
+    <form asp-controller="PSfunds" asp-action="Index">
+        <div class="row">
+            <div class="col-12 text-end p-1">
+                <button class="btn btn-primary" type="submit">calculate</button>
+            </div>
+            <div class="col-6 col-md-3 p-2">
+                <label asp-for="JoiningDate" class="form-label"></label>
+            </div>
+            <div class="col-6 col-md-3 p-2">
+                <input asp-for="JoiningDate" class="form-control"/>
+            </div>
+
+            <div class=" col-6 col-md-3 p-2">
+                <label asp-for="LeavingDate" class="form-label"></label>
+            </div>
+            <div class="col-6 col-md-3 p-2">
+                <input asp-for="LeavingDate" class="form-control" />
+            </div>
+
+            <div class="col-6 col-md-4 p-2">
+                <label asp-for="LumpSumTransfer"></label>
+            </div>
+            <div class="col-6 col-md-4  p-2">
+                <div class="btn-group">
+                    <span class="border border-end-0 p-1 fw-bold" style="background-color:#f3f3f3">R</span>
+                    <input asp-for="LumpSumTransfer" class="border fw-bold" placeholder="1000000s"/>
+                </div>
+            </div>
+            <div class="col-12"></div>
+
+            <div class="col-6 col-md-4  p-2">
+                @Html.DisplayNameFor(item=>Model.YearsInPSfunds)
+            </div>
+            <div class="col-4 col-md-4  p-1">
+                <div class="d-inline-block p-1 text-center border" style="width:50px;background-color:#f3f3f3">
+                    @Html.DisplayFor(item=>Model.YearsInPSfunds)
+                </div>
+            </div>
+            <div class="col-12"></div>
+
+            <div class="col-6 col-md-4  p-2">
+                @Html.DisplayNameFor(item=>Model.YearsPostOneMarch)
+            </div>
+            <div class="col-4 col-md-4 p-1">
+                <div class="d-inline-block p-1 text-center border" style="width:50px;background-color:#f3f3f3">
+                    @Html.DisplayFor(item=>Model.YearsPostOneMarch)
+                </div>
+            </div>
+            <div class="col-12">
+                <hr/>
+            </div>
+            <div class="col-6 col-md-3 p-2 text-end">
+                @Html.DisplayNameFor(item=>Model.TaxablePortion)
+            </div>
+            <div class="col-4 col-md-3 p-1" >
+                <div class="p-1 fw-bold" style="background-color:#f3f3f3">
+                    @Html.DisplayFor(item=>Model.TaxablePortion)
+                </div>
+            </div>
+
+            <div class="col-6 col-md-3 p-2 text-end">
+                @Html.DisplayNameFor(item=>Model.TaxFreePortion)
+            </div>
+            <div class="col-4 col-md-3 p-1">
+                <div class="p-1 fw-bold text-success" style="background-color:#f3f3f3">
+                    @Html.DisplayFor(item=>Model.TaxFreePortion)
+                </div>
+            </div>
+
+            <div class="col-12">
+                <hr />
+            </div>
+        </div>
+    </form>
+</div>

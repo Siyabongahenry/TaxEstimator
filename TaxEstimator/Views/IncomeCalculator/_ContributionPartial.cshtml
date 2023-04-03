@@ -1,0 +1,33 @@
+﻿@model TaxEstimator.Models.IncomeInfo
+<div class="row">
+    <div class="col-12">
+        <h6 class="text-center">Contributions</h6>
+    </div>
+    <div class="col-6 p-2">
+        <label asp-for="Contributions.UIF" class="form-label"></label>
+    </div>
+    <div class="col-4 p-2">
+        <div class="input-group"> 
+            <span class="p-1 fw-bold border border-end-0" style="background-color:#f3f3f3">R</span>
+            <input asp-for="Contributions.UIF" class="form-control"/>
+        </div>
+    </div>
+    <div class="col-6 p-2">
+        <label asp-for="Contributions.ProvidentFund" class="form-label"></label>
+    </div>
+    <div class="col-4 p-2">
+        <div class="input-group">
+            <span class="p-1 fw-bold border border-end-0" style="background-color:#f3f3f3">R</span>
+            <input asp-for="Contributions.ProvidentFund" pattern="[0-9]+.?[0-9]+" class="form-control"/>
+        </div>
+    </div>
+    <div class="col-6 p-2">
+        <label asp-for="Contributions.TravelAllowance" class="form-label"></label>
+    </div>
+    <div class="col-4 p-2">
+        <div class="input-group">
+            <span class="p-1 fw-bold border border-end-0" style="background-color:#f3f3f3">R</span>
+            <input asp-for="Contributions.TravelAllowance" pattern="[0-9]+.?[0-9]+" class="form-control" />
+        </div>
+    </div>
+</div>
