@@ -83,6 +83,7 @@ C:\Users\lenovo\Desktop\TaxEstimator\TaxEstimator\bin\Debug\net6.0\System.Compos
 C:\Users\lenovo\Desktop\TaxEstimator\TaxEstimator\bin\Debug\net6.0\System.Composition.Runtime.dll
 C:\Users\lenovo\Desktop\TaxEstimator\TaxEstimator\bin\Debug\net6.0\System.Composition.TypedParts.dll
 C:\Users\lenovo\Desktop\TaxEstimator\TaxEstimator\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
+C:\Users\lenovo\Desktop\TaxEstimator\TaxEstimator\bin\Debug\net6.0\System.Diagnostics.DiagnosticSource.dll
 C:\Users\lenovo\Desktop\TaxEstimator\TaxEstimator\bin\Debug\net6.0\System.Drawing.Common.dll
 C:\Users\lenovo\Desktop\TaxEstimator\TaxEstimator\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\lenovo\Desktop\TaxEstimator\TaxEstimator\bin\Debug\net6.0\System.Reflection.MetadataLoadContext.dll
@@ -274,6 +275,7 @@ C:\Users\lenovo\Desktop\TaxEstimator\TaxEstimator\obj\Debug\net6.0\staticwebasse
 C:\Users\lenovo\Desktop\TaxEstimator\TaxEstimator\obj\Debug\net6.0\staticwebassets.pack.json
 C:\Users\lenovo\Desktop\TaxEstimator\TaxEstimator\obj\Debug\net6.0\staticwebassets.build.json
 C:\Users\lenovo\Desktop\TaxEstimator\TaxEstimator\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\lenovo\Desktop\TaxEstimator\TaxEstimator\obj\Debug\net6.0\scopedcss\Areas\Admin\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\lenovo\Desktop\TaxEstimator\TaxEstimator\obj\Debug\net6.0\scopedcss\Views\Home\index.cshtml.rz.scp.css
 C:\Users\lenovo\Desktop\TaxEstimator\TaxEstimator\obj\Debug\net6.0\scopedcss\Views\IncomeCalculator\_EmployeePartial.cshtml.rz.scp.css
 C:\Users\lenovo\Desktop\TaxEstimator\TaxEstimator\obj\Debug\net6.0\scopedcss\Views\IncomeCalculator\_IncomePartial.cshtml.rz.scp.css

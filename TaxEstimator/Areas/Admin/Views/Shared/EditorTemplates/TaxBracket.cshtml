@@ -1,0 +1,22 @@
+﻿@model TaxEstimator.Models.TaxBracket
+<tr>
+    <td>
+        <input asp-for="Id" type="hidden" />
+        <input asp-for="Year" class="form-control" />
+    </td>
+    <td>
+        <input asp-for="From" class="form-control"/>
+    </td>
+    <td>
+        <input asp-for="To"  class="form-control"/>
+    </td>
+    <td>
+        <input asp-for="Base" class="form-control" />
+    </td>
+    <td>
+        <input asp-for="Margin" class="form-control" />
+    </td>
+    <td>
+        <a class="btn btn-danger" asp-action="DeleteRow" asp-route-id="@Model.Id" asp-route-year="@Model.Year">DELETE</a>
+    </td>
+</tr>

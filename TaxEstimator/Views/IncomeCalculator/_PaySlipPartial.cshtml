@@ -12,9 +12,9 @@
             </span>
         </div>
         <div class="text-end p-2">
-            @Html.DisplayFor(item =>Model.IncomeInfo.Employee.FirstName)
+            @Html.DisplayFor(item =>Model.Income.Employee.FirstName)
             &nbsp;
-            @Html.DisplayFor(item =>Model.IncomeInfo.Employee.LastName)
+            @Html.DisplayFor(item =>Model.Income.Employee.LastName)
         </div>
         <div class="p-2 text-start">
             <span class="fw-bold">
@@ -27,10 +27,10 @@
 
         <div class="w-100 p-2 text-start">
             <span class="fw-bold">
-                @Html.DisplayNameFor(item=>Model.IncomeInfo.Income)
+                @Html.DisplayNameFor(item=>Model.Income.IncomeAmount)
             </span>
             <span id="Income" style="background-color:#f3f3f3;padding:2px;">
-                @Html.DisplayFor(item=>Model.IncomeInfo.Income)
+                @Html.DisplayFor(item=>Model.Income.IncomeAmount)
             </span>
         </div>
         <table class="w-100">
@@ -44,12 +44,12 @@
                 <tr>
                     <td class="text-end">
                         <span>
-                            @Html.DisplayNameFor(item=>Model.IncomeInfo.AnnualIncome)
+                            @Html.DisplayNameFor(item=>Model.Income.GrossIncome)
                         </span>
                     </td>
                     <td class="text-start" style="border-bottom:2px solid green;">
                         <span id="AnnualIncome">
-                            @Html.DisplayFor(item =>Model.IncomeInfo.AnnualIncome)
+                            @Html.DisplayFor(item =>Model.Income.GrossIncome)
                         </span>
                     </td>
                 </tr>
@@ -61,34 +61,29 @@
                     </td>
                     <td class="text-danger text-start">
                         -<span id="MonthlyPAYE">
-                            @Html.DisplayFor(item=>Model.PAYE);
+                            @Html.DisplayFor(item=>Model.PAYE)
                         </span>
                     </td>
                 </tr>
-                <tr>
-                    <td class="text-end">
-                        <span>
-                            @Html.DisplayNameFor(item=>Model.IncomeInfo.Contributions.UIF)
-                        </span>
-                    </td>
-                    <td class="text-danger text-start">
-                        -<span id="UIF">
-                            @Html.DisplayFor(item=>Model.IncomeInfo.Contributions.UIF)
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="text-end">
-                        <span>
-                            @Html.DisplayNameFor(item=>Model.IncomeInfo.Contributions.ProvidentFund)
-                        </span>
-                    </td>
-                    <td class="text-danger text-start">
-                        -<span id="UIF">
-                            @Html.DisplayFor(item=>Model.IncomeInfo.Contributions.ProvidentFund)
-                        </span>
-                    </td>
-                </tr>
+                @foreach(Contribution contribution in Model.Income.Contributions)
+                {
+                    if (!contribution.IsDeductable)
+                    {
+                        continue;
+                    }
+                    <tr>
+                        <td class="text-end">
+                            <span>
+                                @Html.DisplayFor(item=> contribution.Name)
+                            </span>
+                        </td>
+                        <td class="text-danger text-start">
+                            -<span id="UIF">
+                                @Html.DisplayFor(item=>contribution.Amount)
+                            </span>
+                        </td>
+                    </tr>
+                }
             </tbody>
             <tfoot>
                 <tr>

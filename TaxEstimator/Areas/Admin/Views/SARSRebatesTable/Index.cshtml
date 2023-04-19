@@ -1,0 +1,43 @@
+﻿@model List<TaxEstimator.Models.Rebate>
+@{
+    ViewData["Title"] = "Index";
+}
+<div>
+    <h4 class="p-2 display-6 text-center m-0">Tax Rebate table</h4>
+   
+    @if (Model.Count > 0)
+    {
+        <table class="table table-striped">
+            <thead class="bg-theme">
+                <tr>
+                    <th>@Html.DisplayNameFor(item=>Model[0].Year)</th>
+                    <th>@Html.DisplayNameFor(item=>Model[0].Primary)</th>
+                    <th>@Html.DisplayNameFor(item=>Model[0].Secondary)</th>
+                    <th>@Html.DisplayNameFor(item=>Model[0].Tertiary)</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(Rebate rebate in Model )
+                {  
+                    <tr>
+                        <td>@Html.DisplayFor(item=>rebate.Year)</td>
+                        <td>@Html.DisplayFor(item=>rebate.Primary)</td>
+                        <td>@Html.DisplayFor(item=>rebate.Secondary)</td>
+                        <td>@Html.DisplayFor(item=>rebate.Tertiary)</td>
+                        <td><a class="btn btn-secondary" asp-action="Create">Edit</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>
+            No rebate table found, please add a table.
+        </p>
+    }
+    <div class="text-end p-2">
+        <a asp-action="Create" class="btn btn-primary">Add New Rebate</a>
+    </div>
+</div>

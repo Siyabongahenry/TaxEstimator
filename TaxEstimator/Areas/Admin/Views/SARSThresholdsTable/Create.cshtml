@@ -1,0 +1,53 @@
+﻿@model TaxEstimator.Models.Threshold
+
+@{
+    ViewData["Title"] = "Create";
+}
+<div class="shadow bg-light">
+    <h4 class="display-6 text-center p-2 bg-theme">Create a new Threshold</h4>
+    <form asp-action="Create" method="post">
+        <div class="row p-2">
+            <div class="col-12">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            </div>
+            <div class="col-12 col-lg-3">
+                <label asp-for="Year" class="control-label"></label>
+                <input asp-for="Year" class="form-control" />
+                <span asp-validation-for="Year" class="text-danger"></span>
+            </div>
+            <div class="col-12 col-lg-3">
+                <label asp-for="LowAge" class="control-label"></label>
+                <div class="input-group">
+                    <span class="p-1 bg-theme fw-bold">R</span>
+                    <input asp-for="LowAge" class="form-control" />
+                </div>
+                <span asp-validation-for="LowAge" class="text-danger"></span>
+            </div>
+            <div class="col-12 col-lg-3">
+                <label asp-for="MidAge" class="control-label"></label>
+                <div class="input-group">
+                    <span class="p-1 bg-theme fw-bold">R</span>
+                    <input asp-for="MidAge" class="form-control" />
+                </div>
+                <span asp-validation-for="MidAge" class="text-danger"></span>
+            </div>
+            <div class="col-12 col-lg-3">
+                <label asp-for="OldAge" class="control-label"></label>
+                <div class="input-group">
+                    <span class="p-1 bg-theme fw-bold">R</span>
+                    <input asp-for="OldAge" class="form-control" />
+                </div>
+                <span asp-validation-for="OldAge" class="text-danger"></span>
+            </div>
+            <div class="col-12 text-center pt-2 pb-2">
+                <button type="submit" class="btn btn-primary">
+                    Add Threshold
+                </button>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+
+

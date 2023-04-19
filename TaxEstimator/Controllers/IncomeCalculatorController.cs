@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using TaxEstimator.Models;
 using TaxEstimator.Services;
 
 namespace TaxEstimator.Controllers
 {
+    [AllowAnonymous]
     public class IncomeCalculatorController : Controller
     {
         private ISARSDataExtractor _dataExtractor;
@@ -16,17 +18,13 @@ namespace TaxEstimator.Controllers
             return View("index",new PaySlip());
         }
         [HttpPost]
-        public IActionResult GeneratePaySlip(IncomeInfo incomeInfo)
+        public IActionResult GeneratePaySlip(Income incomeInfo)
         {
-            if (!ModelState.IsValid)
-            {
-                return  View("index",new PaySlip() { IncomeInfo=incomeInfo} );
-            }
            
             PaySlip paySlip = new()
             {
-                IncomeInfo = incomeInfo,
-                TaxBracket = _dataExtractor.GetIncomeTaxBracket(incomeInfo.TaxYear, incomeInfo.TaxableIncome),
+                Income = incomeInfo,
+                TaxBracket = _dataExtractor.GetIncomeTaxBracket(incomeInfo.TaxYear, incomeInfo.AnnualTaxableIncome),
                 Rebate = _dataExtractor.GetEmployeeTaxRebate(incomeInfo.TaxYear,incomeInfo.Employee.Age),
                 Threshold = _dataExtractor.GetEmployeeThreshold(incomeInfo.TaxYear, incomeInfo.Employee.Age),
             };

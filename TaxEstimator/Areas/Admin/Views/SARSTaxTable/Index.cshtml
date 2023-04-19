@@ -1,0 +1,60 @@
+﻿@model TaxEstimator.Areas.Admin.ViewModels.TaxBracketsViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+<div>
+    <h1 class="p-1 display-6 text-center">Rates of tax for individuals</h1>
+    <div class="row">
+        <div class="col-12">     
+            <div tax-year="@Model.TaxYear" index-url="/Admin/SARSTaxTables/" tax-tables-navigation>
+            </div>
+        </div>
+        <div class="col-12">
+           
+            @if (Model.TaxBracketList.Count > 0)
+            {
+                <h4 class="p-2 overflow-auto m-0 text-center">
+                    @Html.DisplayFor(item=>Model.TaxBracketList[0].Year) tax year
+                    (1 March @(Model.TaxBracketList[0].Year-1)
+                    to 28/29 Feb @Model.TaxBracketList[0].Year)
+                </h4>
+                
+                <table class="table table table-striped w-100">
+                    <thead class="bg-theme">
+                        <tr>
+                            <th>@Html.DisplayNameFor(item=>item.TaxBracket.From)</th>
+                            <th>@Html.DisplayNameFor(item=>item.TaxBracket.To)</th>
+                            <th>@Html.DisplayNameFor(item=>item.TaxBracket.Base)</th>
+                            <th>@Html.DisplayNameFor(item=>item.TaxBracket.Margin)</th>
+            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (TaxBracket bracket in Model.TaxBracketList)
+                        {
+
+                            <tr>
+                                <td>@Html.DisplayFor(item=>bracket.From)</td>
+                                <td>@Html.DisplayFor(item=>bracket.To)</td>
+                                <td>@Html.DisplayFor(item=>bracket.Base)</td>
+                                <td>@Html.DisplayFor(item=>bracket.Margin)</td>
+                               
+                            </tr>
+
+                        }
+                    </tbody>
+                </table>
+                <div class="text-end">
+                    <a class="btn btn-secondary" asp-action="Create" asp-route-year="@Model.TaxBracketList[0].Year">Edit Table</a>
+                </div>
+            }
+            else
+            {
+                <p class="fw-bold p-2 bg-warning text-center">We could not find any Tax table for the year of @Html.DisplayFor(item=>Model.TaxYear)</p>
+            }
+            <div class="text-center p-2">
+                <a class="btn btn-primary" asp-action="Create">Create New Table</a>
+            </div>
+        </div>
+    </div>
+</div>

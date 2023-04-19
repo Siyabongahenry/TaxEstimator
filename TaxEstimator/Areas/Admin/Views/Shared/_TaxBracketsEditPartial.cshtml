@@ -1,0 +1,27 @@
+﻿@model TaxEstimator.Areas.Admin.ViewModels.TaxBracketsViewModel
+<table class="table table-striped">
+    <thead>
+        <tr class="bg-theme">
+            <th>Year</th>
+            <th>From (R)</th>
+            <th>To (R)</th>
+            <th>Base (R)</th>
+            <th>Margin (%)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @Html.EditorFor(item=>item.TaxBracketList)
+        @await Html.PartialAsync("_TaxBracketPartial.cshtml",Model)
+    </tbody>
+    <tfoot>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><button class="btn btn-primary" type="submit">Apply Changes</button></td>
+        </tr>
+    </tfoot>
+</table>

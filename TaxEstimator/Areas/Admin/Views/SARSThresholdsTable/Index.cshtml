@@ -1,0 +1,43 @@
+﻿@model List<TaxEstimator.Models.Threshold>
+@{
+    ViewData["Title"] = "Index";
+}
+<div>
+    <h4 class="p-2 display-6 text-center">Tax Threshold table</h4>
+
+    @if (Model.Count > 0)
+    {
+        <table class="table table-striped bg-light">
+            <thead class="bg-theme">
+                <tr>
+                    <th>@Html.DisplayNameFor(item=>Model[0].Year)</th>
+                    <th>@Html.DisplayNameFor(item=>Model[0].LowAge)</th>
+                    <th>@Html.DisplayNameFor(item=>Model[0].MidAge)</th>
+                    <th>@Html.DisplayNameFor(item=>Model[0].OldAge)</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Threshold threshold in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(item=>threshold.Year)</td>
+                        <td>@Html.DisplayFor(item=>threshold.LowAge)</td>
+                        <td>@Html.DisplayFor(item=>threshold.MidAge)</td>
+                        <td>@Html.DisplayFor(item=>threshold.OldAge)</td>
+                        <td><a class="btn btn-secondary" asp-action="Create">Edit</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>
+            No threshold table found, please add a table.
+        </p>
+    }
+    <div class="text-end p-2">
+        <a asp-action="Create" class="btn btn-primary">Add New Threshold</a>
+    </div>
+</div>

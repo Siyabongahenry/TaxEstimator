@@ -1,14 +1,27 @@
 ﻿@model IEnumerable<TaxEstimator.Models.TaxBracket>
-<div>
-    <table>
-        <thead>
+<table class="table table-bordered bg-white">
+    <thead class="bg-theme">
+        <tr>
+            <th>Taxable Income</th>
+            <th>Rates of Tax</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var bracket in Model)
+        {
             <tr>
-                <th></th>
-                <th></th>
+                <td>@Html.DisplayFor(item=>bracket.From) - @Html.DisplayFor(item=>bracket.To)</td>
+                <td>@(bracket.Base > 0 ? bracket.Base.ToString("c")+" + ":"")@Html.DisplayFor(item=>bracket.Margin)% of taxable income @(bracket.From > 1?" above "+(bracket.From-1).ToString("c"):"")</td>
             </tr>
-        </thead>
-        <tbody>
+        }
+        @if(Model.Count() == 0)
+        {
+            <tr>
+                <td class="text-danger">Not Found</td>
+                <td class="text-danger">Not found</td>
+            </tr>
+        }
+    </tbody>
+</table>
 
-        </tbody>
-    </table>
-</div>
+

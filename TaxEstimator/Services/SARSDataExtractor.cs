@@ -59,7 +59,7 @@ namespace TaxEstimator.Services
             }
         };
 
-        public Dictionary<int, Threshold> thresholdsDic = new()
+        private Dictionary<int, Threshold> thresholdsDic = new()
         {
             {
                 2024,
@@ -83,6 +83,41 @@ namespace TaxEstimator.Services
             }
         };
 
+        private Dictionary<int, List<TaxBracket>> PSFundTaxBracketDic = new()
+        {
+            {
+                2024,new List<TaxBracket>
+                {
+                    new TaxBracket{
+                        From = 0,
+                        To =550000,
+                        Margin = 0,
+                        Base =0
+                    },
+                     new TaxBracket{
+                        From = 550001,
+                        To =770000,
+                        Margin = 18,
+                        Base =0
+                    },
+                      new TaxBracket{
+                        From = 770001,
+                        To =1155000,
+                        Margin = 27,
+                        Base =39600
+                    },
+                       new TaxBracket{
+                        From = 1155001,
+                        To =1000000000,
+                        Margin = 36,
+                        Base =130500
+                    }
+
+                }
+
+            }
+
+        };
         public SARSDataExtractor()
         {
 
@@ -120,9 +155,10 @@ namespace TaxEstimator.Services
                 AddTaxBrackets();
             }
 
-            var taxBracket = _taxBracketsDic[taxYear].Find(ti=>annualIncome >=ti.From && annualIncome <= ti.To);
+            var taxBracket = _taxBracketsDic[taxYear]
+                .Find(ti=>annualIncome >=ti.From && annualIncome <= ti.To);
            
-            return taxBracket ==null?new TaxBracket():taxBracket;
+            return taxBracket ==null?new():taxBracket;
         }
 
         public decimal GetEmployeeTaxRebate(int taxYear, int age)
@@ -144,7 +180,7 @@ namespace TaxEstimator.Services
 
         public decimal GetEmployeeThreshold(int taxYear,int age)
         {
-            if(thresholdsDic.ContainsKey(taxYear))
+            if(!thresholdsDic.ContainsKey(taxYear))
             {
                 SetThresholdsDictionery();
             }
@@ -157,6 +193,14 @@ namespace TaxEstimator.Services
 
             return threshold.OldAge;
 
+        }
+
+        public TaxBracket GetPSFundTaxBracket(int taxYear, decimal amount)
+        {
+            var taxBracket = PSFundTaxBracketDic[taxYear]
+                .Find(ti => amount >= ti.From && amount <= ti.To);
+
+            return taxBracket == null || amount <= 0?new():taxBracket;
         }
         private void SetRebateDictionery()
         {

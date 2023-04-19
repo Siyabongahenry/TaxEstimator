@@ -1,0 +1,21 @@
+﻿@model TaxEstimator.Models.Contribution
+@{
+    string[] defaultContributions = { "UIF", "Provident Fund or Pension or RAF", "Travel Allowance" };
+}
+
+<div class="col-6 p-2">
+    
+    <input asp-for="Name" class="bg-white form-control border-0 border-bottom" placeholder="Name" readonly="@(defaultContributions.Contains(Model.Name))"/>
+</div>
+<div class="col-4 p-2">
+    <div class="input-group">
+        <span class="p-2 fw-bold border border-end-0 bg-theme" >R</span>
+        <input asp-for="Amount" class="form-control input-currency rounded-0" readonly="@(Model.Name =="UIF")"/>
+    </div>
+    <div class="input-group mt-1">
+        <span class="p-1 border border-end-0" style="background-color:#f3f3f3">Taxable</span>
+        <input asp-for="TaxablePercent" class="form-control rounded-0" readonly="@(defaultContributions.Contains(Model.Name))" />
+        <span class="p-1 fw-bold border border-end-0 p-2 bg-theme" >%</span>
+    </div>
+    <input asp-for="IsDeductable" type="hidden"/>
+</div>

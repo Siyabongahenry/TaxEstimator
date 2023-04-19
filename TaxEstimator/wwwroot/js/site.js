@@ -31,16 +31,44 @@ function popup(data) {
 
     return true;
 }
+
+function formatToLocalCurrency() {
+    var inputsCollenction = document.getElementsByClassName("input-currency");
+
+    for (let i = 0; i < inputsCollenction.length; i++) {
+
+        let inputValue = inputsCollenction[i].value;
+
+        console.log("val = " + inputValue);
+
+        let value1 = inputValue.replace(/\s/g,"").replace(",", ".");
+
+        console.log("val = "+inputValue);
+
+        let value = parseFloat(value1);
+
+        console.log("val3 = "+inpu);
+
+        
+
+        inputsCollenction[i].value =isNaN(value)?0.00:value.toLocaleString("en-ZA");
+       
+    }
+
+    console.log("hello")
+}
 //income UIF Calculator
-document.getElementById("Income").addEventListener("input", (e) => {
+document.getElementById("IncomeAmount").addEventListener("input", (e) => {
 
-    let UIFinput = document.getElementById("Contributions_UIF");
+    let UIFinput = document.getElementById("Contributions_0__Amount");
+    let incomeValue = (e.target.value).replace(/\s/g, "").replace(",", ".");
 
-    let income = parseFloat(e.target.value);
+    let income = isNaN(parseFloat(incomeValue))?0.00:parseFloat(incomeValue);
 
     let UIF = ((1 / 100) * income);
     UIF = UIF > 177.12 ? 177.12 : UIF;
-    UIFinput.value = isNaN(UIF) ? 0 : UIF;
+
+    UIFinput.value = UIF.toLocaleString("en-ZA");
 
 });
 

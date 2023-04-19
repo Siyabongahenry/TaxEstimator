@@ -1,78 +1,149 @@
-﻿@model TaxEstimator.Models.PSFund;
-<div class="container bg-white pt-2 pb-2">
-    <h4 class="text-center bg-theme p-2 shadow">Public Sector funds Calculations</h4>
-    <form asp-controller="PSfunds" asp-action="Index">
-        <div class="row">
-            <div class="col-12 text-end p-1">
-                <button class="btn btn-primary" type="submit">calculate</button>
-            </div>
-            <div class="col-6 col-md-3 p-2">
-                <label asp-for="JoiningDate" class="form-label"></label>
-            </div>
-            <div class="col-6 col-md-3 p-2">
-                <input asp-for="JoiningDate" class="form-control"/>
-            </div>
+﻿@model TaxEstimator.ViewModels.PSFundsViewModel;
+<form asp-action="DoCalculations" method="POST">
+    <div class="row" style="font-size:14px;">
+        <div class="col-12 col-lg-6">
+            <div class="shadow bg-white m-1 p-1 rounded h-100">
+                <h4 class="text-center bg-theme p-2">Public Sector funds</h4> 
+                    <div class="row">
+                        <div class="col-6 pb-2">
+                            <label asp-for="@Model.PSFund.JoiningDate" class="form-label"></label>
+                        </div>
+                        <div class="col-6 pb-2">
+                            <input asp-for="@Model.PSFund.JoiningDate" class="form-control" />
+                        </div>
+                        <div class=" col-6 pb-2">
+                            <label asp-for="@Model.PSFund.LeavingDate" class="form-label"></label>
+                        </div>
+                        <div class="col-6 pb-2">
+                            <input asp-for="@Model.PSFund.LeavingDate" class="form-control" />
+                        </div>
+                        <div class="col-6 pb-2">
+                            <label asp-for="@Model.PSFund.LumpSumTransfer"></label>
+                        </div>
+                        <div class="col-6 pb-2">
+                            <div class="input-group">
+                                <span class="bg-theme p-2 fw-bold">R</span>
+                                <input asp-for="@Model.PSFund.LumpSumTransfer" class="border fw-bold form-control" placeholder="2 000 000" />
+                            </div>
+                        </div>
+                        <div class="col-8 pb-2">
+                            @Html.DisplayNameFor(item=>Model.PSFund.YearsInPSfunds)
+                        </div>
+                        <div class="col-4 pb-2">
+                            <div class="d-inline-block p-1 border" style="width:50px;background-color:#f3f3f3">
+                                @Html.DisplayFor(item=>Model.PSFund.YearsInPSfunds)
+                            </div>
+                        </div>
 
-            <div class=" col-6 col-md-3 p-2">
-                <label asp-for="LeavingDate" class="form-label"></label>
-            </div>
-            <div class="col-6 col-md-3 p-2">
-                <input asp-for="LeavingDate" class="form-control" />
-            </div>
+                        <div class="col-8 pb-2">
+                            @Html.DisplayNameFor(item=>Model.PSFund.YearsPostOneMarch)
+                        </div>
+                        <div class="col-4 pb-2">
+                            <div class="d-inline-block p-1 border" style="width:50px;background-color:#f3f3f3">
+                                @Html.DisplayFor(item=>Model.PSFund.YearsPostOneMarch)
+                            </div>
+                        </div>
+             
+                        <div class="col-12"><hr/></div>
 
-            <div class="col-6 col-md-4 p-2">
-                <label asp-for="LumpSumTransfer"></label>
-            </div>
-            <div class="col-6 col-md-4  p-2">
-                <div class="btn-group">
-                    <span class="border border-end-0 p-1 fw-bold" style="background-color:#f3f3f3">R</span>
-                    <input asp-for="LumpSumTransfer" class="border fw-bold" placeholder="1000000s"/>
-                </div>
-            </div>
-            <div class="col-12"></div>
+                        <div class="col-6 text-end pb-2 fw-bold">
+                            @Html.DisplayNameFor(item=>Model.PSFund.TaxablePortion)
+                        </div>
+                        <div class="col-4 pb-2">
+                            <div class="p-1 fw-bold" style="background-color:#f3f3f3">
+                                @Html.DisplayFor(item=>Model.PSFund.TaxablePortion)
+                            </div>
+                        </div>
 
-            <div class="col-6 col-md-4  p-2">
-                @Html.DisplayNameFor(item=>Model.YearsInPSfunds)
-            </div>
-            <div class="col-4 col-md-4  p-1">
-                <div class="d-inline-block p-1 text-center border" style="width:50px;background-color:#f3f3f3">
-                    @Html.DisplayFor(item=>Model.YearsInPSfunds)
-                </div>
-            </div>
-            <div class="col-12"></div>
+                        <div class="col-6 text-end pb-2 fw-bold">
+                            @Html.DisplayNameFor(item=>@Model.PSFund.TaxFreePortion)
+                        </div>
+                        <div class="col-4 pb-2">
+                            <div class="p-1 fw-bold text-success" style="background-color:#f3f3f3">
+                                @Html.DisplayFor(item=>@Model.PSFund.TaxFreePortion)
+                            </div>
+                        </div>
 
-            <div class="col-6 col-md-4  p-2">
-                @Html.DisplayNameFor(item=>Model.YearsPostOneMarch)
-            </div>
-            <div class="col-4 col-md-4 p-1">
-                <div class="d-inline-block p-1 text-center border" style="width:50px;background-color:#f3f3f3">
-                    @Html.DisplayFor(item=>Model.YearsPostOneMarch)
-                </div>
-            </div>
-            <div class="col-12">
-                <hr/>
-            </div>
-            <div class="col-6 col-md-3 p-2 text-end">
-                @Html.DisplayNameFor(item=>Model.TaxablePortion)
-            </div>
-            <div class="col-4 col-md-3 p-1" >
-                <div class="p-1 fw-bold" style="background-color:#f3f3f3">
-                    @Html.DisplayFor(item=>Model.TaxablePortion)
-                </div>
-            </div>
+                        <div class="col-12 text-center">
+                            <button class="btn btn-primary" type="submit">calculate</button>
+                        </div>
 
-            <div class="col-6 col-md-3 p-2 text-end">
-                @Html.DisplayNameFor(item=>Model.TaxFreePortion)
-            </div>
-            <div class="col-4 col-md-3 p-1">
-                <div class="p-1 fw-bold text-success" style="background-color:#f3f3f3">
-                    @Html.DisplayFor(item=>Model.TaxFreePortion)
-                </div>
-            </div>
-
-            <div class="col-12">
-                <hr />
+                        <div class="col-12 p-2"></div>
+                    </div>
+           
             </div>
         </div>
-    </form>
-</div>
+        <div class="col-12 col-lg-6">
+            <div class="bg-white p-1 h-100 shadow rounded m-1">
+                <div class="row">
+                    <div class="col-12">
+                        <h4 class="text-center bg-theme p-2">Funds withdrawal</h4>
+                    </div>
+                    <div class="col-12 text-end fw-bold">
+                        <div class="d-inline-block bg-theme p-2 mb-2">
+                            <span>@Html.DisplayNameFor(item=>item.PSFundWithdrawals.RemainingBalance)</span>
+                            :
+                            <span class="display-6">@Html.DisplayFor(item=>item.PSFundWithdrawals.RemainingBalance)</span>
+                        </div>
+                    </div>
+                    <div class="col-4 text-center">
+                        <label asp-for="@Model.PSFundWithdrawals.TaxYear" class="fw-bold"></label>
+                    </div>
+                    <div class="col-8">
+                        <select asp-for="@Model.PSFundWithdrawals.TaxYear"  class="form-control">
+                            @for (int year = DateTime.Now.Year + 1; year > (DateTime.Now.Year - 10); year--)
+                            {
+                                <option value="@year">@year (1 March @year - 28 Feb @(year - 1))</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-12 p-1"></div>
+                    <div class="col-6 text-center">
+                        <label asp-for="@Model.PSFundWithdrawals.WidthdrawalAmount" class="fw-bold"></label>
+                    </div>
+                    <div class="col-6">
+                        <div class="input-group">
+                            <span class="p-2 bg-theme fw-bold">R</span>
+                        <input asp-for="@Model.PSFundWithdrawals.WidthdrawalAmount" class="form-control input-currency" placeholder="0.00" />
+                        </div>
+                    </div>
+                    <div class="col-12 p-1"></div>
+                    <div class="col-6 text-center">
+                        <label asp-for="@Model.PSFundWithdrawals.TaxCharges" class="fw-bold"></label>
+                    </div>
+                    <div class="col-6 text-danger">
+                        <div class="input-group">
+                            <span class="p-2 bg-theme fw-bold">R</span>
+                        <span class="form-control input-currency">@Html.DisplayFor(item=>item.PSFundWithdrawals.TaxCharges)</span>
+                        </div>
+                    </div>
+                    <div class="col-12 p-1"></div>
+                    <div class="col-6 text-center">
+                        <label asp-for="@Model.PSFundWithdrawals.TakeHomeAmount" class="fw-bold"></label>
+                    </div>
+                    <div class="col-6">
+                        <div class="input-group">
+                            <span class="p-2 bg-theme fw-bold">R</span>
+                            <span class="form-control">@Html.DisplayFor(item=>item.PSFundWithdrawals.TakeHomeAmount)</span>
+                        </div>
+                    </div>
+                    <div class="col-12 p-1"></div>
+                    <div class="col-6 text-center">
+                        <label asp-for="@Model.PSFundWithdrawals.AnnuityMonthlyIncome" class="fw-bold"></label>
+                    </div>
+                    <div class="col-6">
+                        <div class="input-group">
+                            <span class="p-2 bg-theme fw-bold">R</span>
+                            <span class="form-control">@Html.DisplayFor(item=>item.PSFundWithdrawals.AnnuityMonthlyIncome)</span>
+                        </div>
+                    </div>
+                    <div class="col-12 p-1"></div>
+                    <div class="col-12 text-center">
+                        <button type="submit" class="btn btn-primary">Calculate</button>
+                    </div>
+                </div>
+                   
+            </div>
+        </div>
+    </div>
+</form>

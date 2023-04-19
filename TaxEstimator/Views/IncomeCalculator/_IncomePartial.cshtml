@@ -1,6 +1,6 @@
 ﻿@using TaxEstimator.Utility;
-@model TaxEstimator.Models.IncomeInfo;
-<form asp-action="GeneratePaySlip"  method="POST">
+@model TaxEstimator.Models.Income;
+<form asp-action="GeneratePaySlip" method="POST">
     <div class="row">
         <div class="col-12">
             <div class="p-2">
@@ -21,19 +21,24 @@
                     </select>
                 </div>
                 <div class="col-6 p-2">
-                    @Html.DisplayNameFor(i=>Model.Income)<sub class="text-danger">*</sub>
+                    @Html.DisplayNameFor(i=>Model.IncomeAmount)<sub class="text-danger">*</sub>
                 </div>
                 <div class="col-6 col-md-4 p-2">
                     <div class="input-group">
-                        <span class="p-1 fw-bold border border-end-0" style="background-color:#f3f3f3">R</span>
-                        <input asp-for="Income" class="border form-control" pattern="[0-9]+.?[0-9]+" />
+                        <span class="p-2 fw-bold border border-end-0 bg-theme" >R</span>
+                        <input asp-for="IncomeAmount" class="border form-control input-currency rounded-0" />
                     </div>
                 </div>
 
                 <div class="col-12">
                     <a id="contributionsCollapseBtn" class="bg-white border-0 form-control mt-2 text-primary text-decoration-none" data-bs-toggle="collapse" data-bs-target="#contributionsBlock" >+ Add contributions(Provident Fund/Pension/RAF/Travel Allowance)</a>
-                    <div class="collapse" id="contributionsBlock">
-                        @await Html.PartialAsync("_ContributionPartial.cshtml", Model)
+                    <div class="collapse" id="contributionsBlock">      
+                        <div class="row">
+                            <div class="col-12">
+                                <h6 class="text-center">Contributions</h6>
+                            </div>
+                            @Html.EditorFor(item=>item.Contributions)
+                        </div>
                     </div>
                 </div>
 
@@ -44,13 +49,13 @@
                     <select asp-for="TaxYear" class="form-control">
                         @for (int year = DateTime.Now.Year + 1; year > (DateTime.Now.Year - 10); year--)
                         {
-                            <option value="@year">@year (1 March @year -28 Feb @(year - 1))</option>
+                            <option value="@year">@year (1 March @year - 28 Feb @(year - 1))</option>
                         }
                     </select>
                 </div>
 
                 <div class="col-12 text-center p-2">
-                    <button class="btn btn-primary" type="submit">Calculate</button>
+                    <button class="btn btn-primary" type="submit" onclick="formatToLocalCurrency()">Calculate</button>
                     <div id="calculator-spinner" class="spinner-border d-none"></div>
                 </div>
             </div>

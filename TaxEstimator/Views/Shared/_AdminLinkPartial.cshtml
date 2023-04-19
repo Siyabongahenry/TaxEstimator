@@ -1,0 +1,9 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using TaxEstimator.Utility
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@if (SignInManager.IsSignedIn(User) && User.IsInRole(URole.Admin))
+{  
+   <a class="nav-link text-dark" asp-area="Admin" asp-controller="Home" asp-action="Index">Admin</a> 
+}

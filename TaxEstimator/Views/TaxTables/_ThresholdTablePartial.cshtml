@@ -1,0 +1,33 @@
+﻿@model TaxEstimator.Models.Threshold;
+<div>
+    <table class="table table-striped bg-white">
+        <thead class="bg-theme">
+            <tr>
+                <th>@Html.DisplayNameFor(item=>item.Year)</th>
+                <th>@Html.DisplayNameFor(item=>item.LowAge)</th>
+                <th>@Html.DisplayNameFor(item=>item.MidAge)</th>
+                <th>@Html.DisplayNameFor(item=>item.OldAge)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(item=>item.Year)</td>
+                    <td>@Html.DisplayFor(item=>item.LowAge)</td>
+                    <td>@Html.DisplayFor(item=>item.MidAge)</td>
+                    <td>@Html.DisplayFor(item=>item.OldAge)</td>
+                </tr>
+            }
+            else
+            {
+                <tr>
+                    <td class="text-danger">Not Found</td>
+                    <td class="text-danger">Not Found</td>
+                    <td class="text-danger">Not Found</td>
+                    <td class="text-danger">Not Found</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

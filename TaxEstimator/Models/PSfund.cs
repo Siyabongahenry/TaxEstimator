@@ -26,18 +26,21 @@ namespace TaxEstimator.Models
                 return JoiningDate.Year < 1998?(LeavingDate.Year - 1998): YearsInPSfunds;
             } 
         }
+
         [Display(Name = "Approximate Taxable portion")]
-        [DataType (DataType.Currency)]
-        public decimal TaxablePortion { 
-            get { 
-                return YearsPostOneMarch*(LumpSumTransfer/YearsInPSfunds);
-            } 
+        [DataType(DataType.Currency)]
+        public decimal TaxablePortion
+        {
+            get
+            {
+                return YearsPostOneMarch * (LumpSumTransfer / YearsInPSfunds);
+            }
         }
         [Display(Name = "Approximate Tax-free portion")]
         [DataType(DataType.Currency)]
         public decimal TaxFreePortion { 
             get {
-                return LumpSumTransfer - TaxablePortion;
+                return (LumpSumTransfer - TaxablePortion);
             }
         }
 

@@ -12,6 +12,7 @@ input[type="radio"] + label[b-swk70twuet] {
 }
 
 input[type="radio"]:checked + label[b-swk70twuet] {
-    background-color: silver;
+    background-color: var(--theme-color);
     border-color:var(--theme-color);
+    color:white;
 }

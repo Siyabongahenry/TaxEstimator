@@ -1,17 +1,33 @@
-﻿@model IEnumerable<TaxEstimator.Models.TaxBracket>
+﻿@model TaxEstimator.Models.Rebate;
 <div>
-    <table>
-        <thead>
+    <table class="table table-striped bg-white">
+        <thead class="bg-theme">
             <tr>
-                <th></th>
-                <th></th>
+                <th>@Html.DisplayNameFor(item=>item.Year)</th>
+                <th>@Html.DisplayNameFor(item=>item.Primary)</th>
+                <th>@Html.DisplayNameFor(item=>item.Secondary)</th>
+                <th>@Html.DisplayNameFor(item=>item.Tertiary)</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td></td>
-                <td></td>
-            </tr>
+            @if (Model != null)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(item=>item.Year)</td>
+                    <td>@Html.DisplayFor(item=>item.Primary)</td>
+                    <td>@Html.DisplayFor(item=>item.Secondary) </td>
+                    <td>@Html.DisplayFor(item=>item.Tertiary) </td>
+                </tr>
+            }
+            else
+            {
+                <tr>
+                    <td class="text-danger">Not Found</td>
+                    <td class="text-danger">Not Found</td>
+                    <td class="text-danger">Not Found</td>
+                    <td class="text-danger">Not Found</td>
+                </tr>
+            }
         </tbody>
     </table>
 </div>

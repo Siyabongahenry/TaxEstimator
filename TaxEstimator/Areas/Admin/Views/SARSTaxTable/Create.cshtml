@@ -1,0 +1,11 @@
+﻿@model TaxEstimator.Areas.Admin.ViewModels.TaxBracketsViewModel
+@{
+    ViewData["Title"] = "Create";
+}
+<div class="shadow bg-light">
+    <h1 class="display-6 p-2 bg-white text-center">Create New Tax Brackets Table</h1>
+    <a class="text-primary text-decoration-none" asp-action="Index">Go Back</a>
+    <form asp-action="Create" method="post">
+        @await Html.PartialAsync("_TaxBracketsEditPartial",Model)
+    </form>
+</div>

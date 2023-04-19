@@ -1,0 +1,32 @@
+﻿@model IEnumerable<TaxEstimator.Models.ApplicationUser>;
+@{
+    ViewData["Title"] = "Account Manage";
+}
+
+<div>
+    <h4 class="p-2 bg-theme display-6">Manager Users Account</h4>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email Adress</th>
+                <th>Phone Number</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (ApplicationUser user in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(item=>user.FirstName)</td>
+                    <td>@Html.DisplayFor(item=>user.LastName)</td>
+                    <td>@Html.DisplayFor(item=>user.Email)</td>
+                    <td>@Html.DisplayFor(item=>user.PhoneNumber)</td>
+                    <td><a class="btn btn-danger">Block</a></td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

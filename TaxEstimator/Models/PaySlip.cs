@@ -8,7 +8,7 @@ namespace TaxEstimator.Models
         [DataType(DataType.Date)]
         public DateTime Date { get {  return DateTime.Now; } }
         public TaxBracket TaxBracket { get; set; } = new();
-        public IncomeInfo IncomeInfo { get; set; } = new();
+        public Income Income { get; set; } = new();
 
         [DataType(DataType.Currency)]
         public decimal Rebate { get; set; }
@@ -16,50 +16,46 @@ namespace TaxEstimator.Models
         [DataType(DataType.Currency)]
         public decimal Threshold { get; set; }
 
-        [Display(Name = "Annual PAYE")]
+        [Display(Name = "PAYE")]
         [DataType(DataType.Currency)]
-        public decimal AnnualPAYE
+        public decimal PAYE
         {
             get
             {
 
-                if (IncomeInfo.AnnualIncome <= Threshold) return 0;
+                if (Income.AnnualTaxableIncome <= Threshold) return 0;
 
 
                 decimal taxBeforeRebate = TaxBracket.Base
-                    + TaxBracket.Margin * 
-                    ((IncomeInfo.TaxableIncome)  - (TaxBracket.From - 1));
+                    + (TaxBracket.Margin/100) *
+                    ((Income.AnnualTaxableIncome) - (TaxBracket.From - 1));
 
-                return taxBeforeRebate - Rebate;
+                return (taxBeforeRebate - Rebate) / Income.TotalIncomesPerAnnum;
             }
         }
 
-        public decimal AnnualTakeHome
-        {
-            get
-            {
-                return IncomeInfo.AnnualIncome
-                  - IncomeInfo.AnnualUIF
-                  - IncomeInfo.AnnualProvidentFund;
-            }
-        }
         [Display(Name = "Take Home")]
         [DataType(DataType.Currency)]
         public decimal TakeHome
         {
             get
             {
-                return AnnualTakeHome / IncomeInfo.TotalIncomesPerAnnum;
+                decimal takeHome = Income.IncomeAmount;
+
+                for(int i = 0;i< Income.Contributions.Count;i++)
+                {
+                    if (!Income.Contributions[i].IsDeductable) {
+                        continue;
+                    }
+
+                    takeHome -= Income.Contributions[i].Amount;
+                }
+
+                return takeHome - PAYE;
             }
         }
-        [Display(Name ="PAYE")]
-        [DataType(DataType.Currency)]
-        public decimal PAYE
-        {
-            get
-            {
-                return AnnualPAYE/IncomeInfo.TotalIncomesPerAnnum;
-            }
-        }
+        
+       
+        
     }
 }

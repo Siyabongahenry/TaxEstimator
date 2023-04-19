@@ -5,6 +5,8 @@ namespace TaxEstimator.Models
 {
     public class TaxBracket
     {
+        [Key]
+        public int? Id { get; set; }
         public int Year { get; set; }
         [DataType(DataType.Currency)]
         public decimal From { get; set; } = 0;

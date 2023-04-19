@@ -10,6 +10,7 @@ namespace TaxEstimator.Services
         public TaxBracket GetIncomeTaxBracket(int taxYear, decimal income);
         public decimal GetEmployeeTaxRebate(int taxYear,int age);
         public decimal GetEmployeeThreshold(int age, int taxYear);
+        public TaxBracket GetPSFundTaxBracket(int taxYear,decimal income);
 
     }
 }

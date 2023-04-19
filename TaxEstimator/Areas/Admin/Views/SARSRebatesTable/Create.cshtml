@@ -1,0 +1,53 @@
+﻿@model TaxEstimator.Models.Rebate
+
+@{
+    ViewData["Title"] = "Create";
+}
+<div class="shadow bg-light">
+    <h4 class="display-6 text-center p-2 bg-theme">Create a new rebate</h4>
+    <form asp-action="Create" method="post">
+        <div class="row p-2" >
+            <div class="col-12">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            </div>
+            <div class="col-12 col-lg-3">
+                <label asp-for="Year" class="control-label"></label>              
+                <input asp-for="Year" class="form-control" />      
+                <span asp-validation-for="Year" class="text-danger"></span>
+            </div>
+            <div class="col-12 col-lg-3">
+                <label asp-for="Primary" class="control-label"></label>
+                <div class="input-group">
+                    <span class="p-1 bg-theme fw-bold">R</span>
+                    <input asp-for="Primary" class="form-control" />
+                </div>
+                <span asp-validation-for="Primary" class="text-danger"></span>
+            </div>
+            <div class="col-12 col-lg-3">
+                <label asp-for="Secondary" class="control-label"></label>
+                <div class="input-group">
+                    <span class="p-1 bg-theme fw-bold">R</span>
+                    <input asp-for="Secondary" class="form-control" />
+                </div>
+                <span asp-validation-for="Secondary" class="text-danger"></span>
+            </div>
+            <div class="col-12 col-lg-3">
+                <label asp-for="Tertiary" class="control-label"></label>
+                <div class="input-group">
+                    <span class="p-1 bg-theme fw-bold">R</span>
+                    <input asp-for="Tertiary" class="form-control" />
+                </div>
+                <span asp-validation-for="Tertiary" class="text-danger"></span>
+            </div>
+            <div class="col-12 text-center pt-2 pb-2">
+                <button type="submit" class="btn btn-primary" >
+                    Add Rebate
+                </button>
+            </div>
+        </div>
+    </form>
+    
+</div>
+
+
+
