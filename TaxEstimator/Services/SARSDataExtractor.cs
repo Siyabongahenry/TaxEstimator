@@ -12,112 +12,14 @@ namespace TaxEstimator.Services
         private List<HtmlNode> _taxTableNodes = new();
 
 
-        private readonly Dictionary<int, List<TaxBracket>> _taxBracketsDic = new() {
+        private readonly Dictionary<int, List<TaxBracket>> _taxBracketsDic = new();
 
-            {2024,
-                new List<TaxBracket>{
-                    new TaxBracket{From =1,To = 237100,Base =0,Margin = 18 } ,
-                    new TaxBracket{From =237101,To = 370500,Base =42678,Margin = 26 },
-                    new TaxBracket{From =370501,To = 512800,Base =77362,Margin = 31 },
-                    new TaxBracket{From =512801,To = 673000,Base =121475,Margin = 36 },
-                    new TaxBracket{From =673001,To = 857900,Base =179147,Margin = 39 },
-                    new TaxBracket{From =857901,To = 1817000,Base =251258,Margin = 41 },
-                    new TaxBracket{From =1817001,To = 10000000000,Base =644489,Margin = 45 },
-                }
-            },
-            {2023,
-                new List<TaxBracket>{
-                    new TaxBracket{From =1,To = 226000,Base =0,Margin = 18 } ,
-                    new TaxBracket{From =226001,To = 353100,Base =40680,Margin = 26 },
-                    new TaxBracket{From =353101,To = 488700,Base =73726,Margin = 31 },
-                    new TaxBracket{From =488701,To = 641400,Base =115762,Margin = 36 },
-                    new TaxBracket{From =641401,To = 817600,Base =170734,Margin = 39 },
-                    new TaxBracket{From =817601,To = 1731600,Base =239452,Margin = 41 },
-                    new TaxBracket{From =1731601,To = 10000000000000,Base =614192,Margin = 45 },
-                }
-            }
-        };
+        private readonly Dictionary<int, Rebate> _rebateDic = new();
 
-        private readonly Dictionary<int, Rebate> rebateDic =new (){
-            {
-                2024,
-                new Rebate()
-                {
-                   Primary=17235,
-                   Secondary = 9444,
-                   Tertiary =3145
-                }
-            },
-            {
-                2023,
-                new Rebate()
-                {
-                   Primary=16425,
-                   Secondary = 9000,
-                   Tertiary =2997
-                }
-            }
-        };
 
-        private Dictionary<int, Threshold> thresholdsDic = new()
-        {
-            {
-                2024,
-                new Threshold()
-                {
-                    LowAge = 95750,
-                    MidAge = 148217,
-                    OldAge = 165689
+        private Dictionary<int, Threshold> _thresholdsDic = new();
 
-                }
-            },
-            {
-                2023,
-                new Threshold()
-                {
-                    LowAge = 91250,
-                    MidAge = 141250,
-                    OldAge = 157900
-
-                }
-            }
-        };
-
-        private Dictionary<int, List<TaxBracket>> PSFundTaxBracketDic = new()
-        {
-            {
-                2024,new List<TaxBracket>
-                {
-                    new TaxBracket{
-                        From = 0,
-                        To =550000,
-                        Margin = 0,
-                        Base =0
-                    },
-                     new TaxBracket{
-                        From = 550001,
-                        To =770000,
-                        Margin = 18,
-                        Base =0
-                    },
-                      new TaxBracket{
-                        From = 770001,
-                        To =1155000,
-                        Margin = 27,
-                        Base =39600
-                    },
-                       new TaxBracket{
-                        From = 1155001,
-                        To =1000000000,
-                        Margin = 36,
-                        Base =130500
-                    }
-
-                }
-
-            }
-
-        };
+        private Dictionary<int, List<TaxBracket>> PSFundTaxBracketDic = new();
         public SARSDataExtractor()
         {
 
@@ -130,12 +32,25 @@ namespace TaxEstimator.Services
 
             const string url = "https://www.sars.gov.za/tax-rates/income-tax/rates-of-tax-for-individuals/";
 
-            var response =await CallUrl(url);
+            try
+            {
+                var response = await CallUrl(url);
 
-            _document.LoadHtml(response);
+                _document.LoadHtml(response);
+            }
+            catch
+            {
+                return false;
+            }
 
             //find all tables from the html document
             _taxTableNodes = _document.DocumentNode.SelectNodes("//table").ToList();
+
+            SetTaxBrackets();
+            SetThresholdsDictionery();
+            SetRebateDictionery();
+           
+            
 
             return _taxTableNodes.Count > 0;
         }
@@ -152,8 +67,10 @@ namespace TaxEstimator.Services
         {
             if(_taxBracketsDic.Count == 0)
             {
-                AddTaxBrackets();
+                SetTaxBrackets();
             }
+
+            if (!_taxBracketsDic.ContainsKey(taxYear)) return new();
 
             var taxBracket = _taxBracketsDic[taxYear]
                 .Find(ti=>annualIncome >=ti.From && annualIncome <= ti.To);
@@ -163,12 +80,14 @@ namespace TaxEstimator.Services
 
         public decimal GetEmployeeTaxRebate(int taxYear, int age)
         {
-            if(!rebateDic.ContainsKey(taxYear))
+            if(!_rebateDic.ContainsKey(taxYear))
             {
                 SetRebateDictionery();
             }
 
-            Rebate rebate = rebateDic[taxYear];
+            if (!_rebateDic.ContainsKey(taxYear)) return 0;
+
+            Rebate rebate = _rebateDic[taxYear];
 
             if (age < 65) return rebate.Primary;
 
@@ -180,12 +99,14 @@ namespace TaxEstimator.Services
 
         public decimal GetEmployeeThreshold(int taxYear,int age)
         {
-            if(!thresholdsDic.ContainsKey(taxYear))
+            if(!_thresholdsDic.ContainsKey(taxYear))
             {
                 SetThresholdsDictionery();
             }
 
-            Threshold threshold = thresholdsDic[taxYear];
+            if (!_thresholdsDic.ContainsKey(taxYear)) return 0;
+
+            Threshold threshold = _thresholdsDic[taxYear];
 
             if(age < 65) return threshold.LowAge;
 
@@ -197,6 +118,8 @@ namespace TaxEstimator.Services
 
         public TaxBracket GetPSFundTaxBracket(int taxYear, decimal amount)
         {
+            if (!PSFundTaxBracketDic.ContainsKey(taxYear)) return new TaxBracket();
+
             var taxBracket = PSFundTaxBracketDic[taxYear]
                 .Find(ti => amount >= ti.From && amount <= ti.To);
 
@@ -220,13 +143,13 @@ namespace TaxEstimator.Services
             {
                 Rebate rebate = new Rebate()
                 {
-                    Year = currentTaxYear - 1,
+                    Year = currentTaxYear - i,
                     Primary = rowsData[0][i], //first row column i
                     Secondary = rowsData[1][i],//second row column i
                     Tertiary = rowsData[2][i] //third row columni
                 };
 
-                rebateDic.Add(rebate.Year,rebate);
+                _rebateDic.Add(rebate.Year,rebate);
             }
         }
         public void SetThresholdsDictionery()
@@ -247,13 +170,13 @@ namespace TaxEstimator.Services
             {
                 Threshold threshold = new Threshold()
                 {
-                    Year = currentTaxYear - 1,
+                    Year = currentTaxYear - i,
                     LowAge = rowsData[0][i], //first row column i
                     MidAge = rowsData[1][i],//second row column i
                     OldAge = rowsData[2][i] //third row columni
                 };
 
-                thresholdsDic.Add(threshold.Year, threshold);
+                _thresholdsDic.Add(threshold.Year, threshold);
             }
         }
         private List<decimal>[] getRowsData(List<HtmlNode> rowNodes)
@@ -265,7 +188,7 @@ namespace TaxEstimator.Services
                             .ToList();
 
             List<decimal> firstRowData = row1.Select(
-                    td=>decimal.Parse(Regex.Match(Regex.Replace(td.InnerText, @"\s+", ""), @"\d+\.?\d").Value)
+                    td=>decimal.Parse(Regex.Match(Regex.Replace(td.InnerText, @"\s+", ""), @"\d+\.?\d{0,}").Value)
                 ).ToList();
 
             //second row of rebate or threshold
@@ -289,7 +212,7 @@ namespace TaxEstimator.Services
             return new List<decimal>[] {firstRowData,secondRowData,thirdRowData };
         }
         
-        private void AddTaxBrackets(int tableNo = 0)
+        private void SetTaxBrackets(int tableNo = 0)
         {
             if (tableNo >= _taxTableNodes.Count-7) return;
 
@@ -297,7 +220,7 @@ namespace TaxEstimator.Services
 
             if(_taxBracketsDic.ContainsKey(currentTaxYear-tableNo))
             {
-                AddTaxBrackets(tableNo + 1);
+                SetTaxBrackets(tableNo + 1);
 
                 return;
             }
@@ -330,7 +253,7 @@ namespace TaxEstimator.Services
                     From = minIncome,
                     To = maxIncome,
                     Base = taxSum.Length > 1 ? decimal.Parse(taxSum[0]) : 0,
-                    Margin = taxSum.Length > 1 ? decimal.Parse(taxSum[1]) / 100 : decimal.Parse(taxSum[0]) / 100
+                    Margin = taxSum.Length > 1 ? decimal.Parse(taxSum[1]): decimal.Parse(taxSum[0])
                 };
 
                 taxableIncomes.Add(taxBracket);
@@ -342,8 +265,50 @@ namespace TaxEstimator.Services
 
             _taxBracketsDic.Add(key,taxableIncomes);
 
-            AddTaxBrackets(tableNo+1);
+            SetTaxBrackets(tableNo+1);
 
+        }
+        // lists
+        public async Task<List<TaxBracket>> GetTaxBracketListAsync(int year)
+        {
+            if(!_taxBracketsDic.ContainsKey(year))
+            {
+               await RetrieveSARSDataAsync();
+            }
+
+            if(!_taxBracketsDic.ContainsKey(year)) return new();
+            
+            List<TaxBracket> lst= _taxBracketsDic[year];
+
+            return lst;
+        }
+
+        public async Task<List<Rebate>> GetTaxRebateListAsync()
+        {
+            if (_rebateDic.Count == 0)
+            {
+                await RetrieveSARSDataAsync();
+            }
+
+            if (_rebateDic.Count == 0) return new();
+
+            List<Rebate> lst = _rebateDic.Values.ToList();
+
+            return lst;
+        }
+
+        public async Task<List<Threshold>> GetTaxThresholdListAsync()
+        {
+            if (_thresholdsDic.Count == 0)
+            {
+                await RetrieveSARSDataAsync();
+            }
+
+            if (_thresholdsDic.Count == 0) return new();
+
+            List<Threshold> lst = _thresholdsDic.Values.ToList();
+
+            return lst;
         }
     }
 }

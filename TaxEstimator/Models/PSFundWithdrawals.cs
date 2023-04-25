@@ -66,6 +66,11 @@ namespace TaxEstimator.Models
                 return RemainingBalance / 120;
             }
         }
+        [Display(Name ="Income Draw down(2.5% - 17.5%)")]
+        public decimal IncomeDrawDown
+        {
+            get;set;
+        }
 
         [Display(Name ="Tax Year")]
         public int TaxYear { get; set; }

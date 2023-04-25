@@ -12,5 +12,10 @@ namespace TaxEstimator.Services
         public decimal GetEmployeeThreshold(int age, int taxYear);
         public TaxBracket GetPSFundTaxBracket(int taxYear,decimal income);
 
+        public Task<List<TaxBracket>> GetTaxBracketListAsync(int year);
+        public Task<List<Rebate>> GetTaxRebateListAsync();
+        public Task<List<Threshold>> GetTaxThresholdListAsync();
+
+
     }
 }

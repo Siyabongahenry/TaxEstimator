@@ -1,5 +1,5 @@
 ﻿@using TaxEstimator.Utility;
-@model TaxEstimator.Models.Income;
+@model TaxEstimator.Models.WorkerIncome;
 <form asp-action="GeneratePaySlip" method="POST">
     <div class="row">
         <div class="col-12">
@@ -38,6 +38,9 @@
                                 <h6 class="text-center">Contributions</h6>
                             </div>
                             @Html.EditorFor(item=>item.Contributions)
+                            <div class="col-12">
+                                <button class="btn btn-outline-primary" id="add-contribution-btn" type="button">Add Contribution</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -62,3 +65,4 @@
         </div>
     </div>
 </form>
+<script src="~/js/income-calculator.js" asp-append-version="true"></script>

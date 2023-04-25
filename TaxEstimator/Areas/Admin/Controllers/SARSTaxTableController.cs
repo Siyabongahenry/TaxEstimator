@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using TaxEstimator.Areas.Admin.ViewModels;
 using TaxEstimator.Data;
 using TaxEstimator.Models;
+using TaxEstimator.Services;
 
 namespace TaxEstimator.Areas.Admin.Controllers
 {
@@ -12,10 +13,12 @@ namespace TaxEstimator.Areas.Admin.Controllers
     public class SARSTaxTableController : Controller
     {
         private readonly ApplicationDbContext _db;
+        private readonly ISARSDataExtractor _dataExtractor;
 
-        public SARSTaxTableController(ApplicationDbContext db)
+        public SARSTaxTableController(ApplicationDbContext db,ISARSDataExtractor dataExtractor)
         {
             _db = db;
+            _dataExtractor = dataExtractor;
         }
         public async Task<IActionResult> Index(int year = 2024)
         {
@@ -40,9 +43,29 @@ namespace TaxEstimator.Areas.Admin.Controllers
             if(year != null)
             {
                 var taxBrackets = await _db.TaxBrackets.Where(bracket => bracket.Year == year).ToListAsync();
-                return View(new TaxBracketsViewModel() { TaxBracketList = taxBrackets});
+                return View(new TaxBracketsViewModel()
+                    {
+                        TaxBracketList = taxBrackets,
+                        TaxYear = (int)year,
+                        TaxBracket = new TaxBracket() { Year = (int)year }
+                    }
+                );
             }
             return View(new TaxBracketsViewModel());
+        }
+
+        public async Task<IActionResult> ExtractFromSARS(int? year)
+        {
+            if (year == null) return View("Create");
+
+        
+            TaxBracketsViewModel vm = new TaxBracketsViewModel()
+            {
+                TaxBracketList =await _dataExtractor.GetTaxBracketListAsync((int)year),
+                TaxBracket = new TaxBracket() { Year= (int)year },
+                TaxYear = (int)year
+            };
+            return View("Create",vm);
         }
         [HttpPost]
         public async Task<IActionResult> Create(TaxBracketsViewModel lstVM)

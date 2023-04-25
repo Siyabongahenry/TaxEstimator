@@ -3,8 +3,11 @@
     ViewData["Title"] = "Create";
 }
 <div class="shadow bg-light">
-    <h1 class="display-6 p-2 bg-white text-center">Create New Tax Brackets Table</h1>
-    <a class="text-primary text-decoration-none" asp-action="Index">Go Back</a>
+    <h1 class="display-6 p-2 bg-white text-center">Create or Edit @Model.TaxYear Brackets</h1>
+    <div class="p-2 overflow-auto">
+        <a class="text-primary text-decoration-none float-start" asp-action="Index">Go Back</a>
+        <a class="btn btn-success float-end" asp-action="ExtractFromSARS" asp-route-year="@Model.TaxYear">Auto Fill With SARS Data</a>
+    </div>
     <form asp-action="Create" method="post">
         @await Html.PartialAsync("_TaxBracketsEditPartial",Model)
     </form>

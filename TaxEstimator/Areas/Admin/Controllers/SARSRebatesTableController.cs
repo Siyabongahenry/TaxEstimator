@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using TaxEstimator.Areas.Admin.ViewModels;
 using TaxEstimator.Data;
 using TaxEstimator.Models;
+using TaxEstimator.Services;
 
 namespace TaxEstimator.Areas.Admin.Controllers
 {
@@ -11,9 +13,11 @@ namespace TaxEstimator.Areas.Admin.Controllers
     public class SARSRebatesTableController : Controller
     {
         private readonly ApplicationDbContext _db;
-        public SARSRebatesTableController(ApplicationDbContext db) 
+        private readonly ISARSDataExtractor _dataExtractor;
+        public SARSRebatesTableController(ApplicationDbContext db,ISARSDataExtractor dataExtractor) 
         { 
             _db = db;
+            _dataExtractor = dataExtractor;
         }
         public async Task<IActionResult> Index()
         {
@@ -22,32 +26,63 @@ namespace TaxEstimator.Areas.Admin.Controllers
             return View(rebateLst);
         }
 
-        public async Task<IActionResult> Create(int? id)
+        public async Task<IActionResult> Create()
         {
-            if(id == null) return View(new Rebate());
+            TaxRebatesViewModel vm = new()
+            {
+                RebateList = await _db.TaxRebates.ToListAsync()
+            };
 
-            Rebate rebate = await _db.TaxRebates.FirstAsync(r=>r.Id == id);
+            return View(vm);
+        }
+        public async Task<IActionResult> ExtractFromSARS()
+        {
+            var rebateList = await _dataExtractor.GetTaxRebateListAsync();
 
-            return View(rebate);
+            TaxRebatesViewModel vm = new()
+            {
+                RebateList = await _dataExtractor.GetTaxRebateListAsync()
+            };
+
+            return View("Create",vm);
         }
         [HttpPost]
-        public async Task<IActionResult> Create(Rebate rebate)
+        public async Task<IActionResult> Create(TaxRebatesViewModel vm)
         {
-            if(!ModelState.IsValid) return View(rebate);
-            
-            bool exist= _db.TaxRebates.Any(b=>b.Year == rebate.Year);
+            if (!ModelState.IsValid) return View(vm);
 
-            if (exist)
+            if (vm.Rebate.Year != 0 && vm.Rebate.Primary != 0
+                && vm.Rebate.Secondary != 0 && vm.Rebate.Tertiary != 0)
             {
-                
+                vm.RebateList.Add(vm.Rebate);
             }
-            else
+
+            foreach (Rebate r in vm.RebateList)
             {
-                _db.Add(rebate);
+                if (r.Id  != null)
+                {
+                    _db.Remove(r);
+                }
+
+                _db.Add(r);
             }
+           
             await _db.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            var r = await _db.TaxRebates.FindAsync(id);
+
+            if (r != null)
+            {
+                _db.Remove(r);
+                await _db.SaveChangesAsync();
+            }
+
+            return RedirectToAction(nameof(Create));
         }
     }
 }

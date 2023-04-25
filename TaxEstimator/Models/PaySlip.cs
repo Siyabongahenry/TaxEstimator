@@ -8,7 +8,7 @@ namespace TaxEstimator.Models
         [DataType(DataType.Date)]
         public DateTime Date { get {  return DateTime.Now; } }
         public TaxBracket TaxBracket { get; set; } = new();
-        public Income Income { get; set; } = new();
+        public WorkerIncome Income { get; set; } = new();
 
         [DataType(DataType.Currency)]
         public decimal Rebate { get; set; }

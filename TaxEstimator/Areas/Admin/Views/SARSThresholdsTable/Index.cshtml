@@ -1,31 +1,29 @@
-﻿@model List<TaxEstimator.Models.Threshold>
+﻿@model TaxEstimator.Areas.Admin.ViewModels.TaxThresholdViewModel
 @{
     ViewData["Title"] = "Index";
 }
 <div>
     <h4 class="p-2 display-6 text-center">Tax Threshold table</h4>
 
-    @if (Model.Count > 0)
+    @if (Model.ThresholdList.Count > 0)
     {
         <table class="table table-striped bg-light">
             <thead class="bg-theme">
                 <tr>
-                    <th>@Html.DisplayNameFor(item=>Model[0].Year)</th>
-                    <th>@Html.DisplayNameFor(item=>Model[0].LowAge)</th>
-                    <th>@Html.DisplayNameFor(item=>Model[0].MidAge)</th>
-                    <th>@Html.DisplayNameFor(item=>Model[0].OldAge)</th>
-                    <th></th>
+                    <th>@Html.DisplayNameFor(item=>Model.Threshold.Year)</th>
+                    <th>@Html.DisplayNameFor(item=>Model.Threshold.LowAge)</th>
+                    <th>@Html.DisplayNameFor(item=>Model.Threshold.MidAge)</th>
+                    <th>@Html.DisplayNameFor(item=>Model.Threshold.OldAge)</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (Threshold threshold in Model)
+                @foreach (Threshold threshold in Model.ThresholdList)
                 {
                     <tr>
                         <td>@Html.DisplayFor(item=>threshold.Year)</td>
                         <td>@Html.DisplayFor(item=>threshold.LowAge)</td>
                         <td>@Html.DisplayFor(item=>threshold.MidAge)</td>
                         <td>@Html.DisplayFor(item=>threshold.OldAge)</td>
-                        <td><a class="btn btn-secondary" asp-action="Create">Edit</a></td>
                     </tr>
                 }
             </tbody>
@@ -38,6 +36,6 @@
         </p>
     }
     <div class="text-end p-2">
-        <a asp-action="Create" class="btn btn-primary">Add New Threshold</a>
+        <a asp-action="Create" class="btn btn-primary">Create/Edit Thresholds</a>
     </div>
 </div>

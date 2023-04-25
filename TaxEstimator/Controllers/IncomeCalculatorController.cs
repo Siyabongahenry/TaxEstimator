@@ -18,7 +18,7 @@ namespace TaxEstimator.Controllers
             return View("index",new PaySlip());
         }
         [HttpPost]
-        public IActionResult GeneratePaySlip(Income incomeInfo)
+        public IActionResult GeneratePaySlip(WorkerIncome incomeInfo)
         {
            
             PaySlip paySlip = new()

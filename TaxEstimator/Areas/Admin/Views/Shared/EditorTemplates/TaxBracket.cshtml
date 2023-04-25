@@ -3,18 +3,23 @@
     <td>
         <input asp-for="Id" type="hidden" />
         <input asp-for="Year" class="form-control" />
+        <span asp-validation-for="Year" class="text-danger"></span>
     </td>
     <td>
         <input asp-for="From" class="form-control"/>
+        <span asp-validation-for="From" class="text-danger"></span>
     </td>
     <td>
         <input asp-for="To"  class="form-control"/>
+        <span asp-validation-for="To" class="text-danger"></span>
     </td>
     <td>
         <input asp-for="Base" class="form-control" />
+        <span asp-validation-for="Base" class="text-danger"></span>
     </td>
     <td>
         <input asp-for="Margin" class="form-control" />
+        <span asp-validation-for="Margin" class="text-danger"></span>
     </td>
     <td>
         <a class="btn btn-danger" asp-action="DeleteRow" asp-route-id="@Model.Id" asp-route-year="@Model.Year">DELETE</a>

@@ -44,16 +44,14 @@
                         }
                     </tbody>
                 </table>
-                <div class="text-end">
-                    <a class="btn btn-secondary" asp-action="Create" asp-route-year="@Model.TaxBracketList[0].Year">Edit Table</a>
-                </div>
+               
             }
             else
             {
                 <p class="fw-bold p-2 bg-warning text-center">We could not find any Tax table for the year of @Html.DisplayFor(item=>Model.TaxYear)</p>
             }
-            <div class="text-center p-2">
-                <a class="btn btn-primary" asp-action="Create">Create New Table</a>
+            <div class="text-end p-2">
+                <a class="btn btn-primary" asp-action="Create" asp-route-year="@Model.TaxYear">Create/Edit Table</a>
             </div>
         </div>
     </div>

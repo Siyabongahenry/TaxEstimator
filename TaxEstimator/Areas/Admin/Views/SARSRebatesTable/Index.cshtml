@@ -14,7 +14,6 @@
                     <th>@Html.DisplayNameFor(item=>Model[0].Primary)</th>
                     <th>@Html.DisplayNameFor(item=>Model[0].Secondary)</th>
                     <th>@Html.DisplayNameFor(item=>Model[0].Tertiary)</th>
-                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -25,7 +24,6 @@
                         <td>@Html.DisplayFor(item=>rebate.Primary)</td>
                         <td>@Html.DisplayFor(item=>rebate.Secondary)</td>
                         <td>@Html.DisplayFor(item=>rebate.Tertiary)</td>
-                        <td><a class="btn btn-secondary" asp-action="Create">Edit</a></td>
                     </tr>
                 }
             </tbody>
@@ -38,6 +36,6 @@
         </p>
     }
     <div class="text-end p-2">
-        <a asp-action="Create" class="btn btn-primary">Add New Rebate</a>
+        <a asp-action="Create" class="btn btn-primary">Create/Edit Rebates</a>
     </div>
 </div>

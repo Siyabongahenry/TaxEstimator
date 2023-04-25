@@ -1,52 +1,54 @@
-﻿@model TaxEstimator.Models.Threshold
+﻿@model TaxEstimator.Areas.Admin.ViewModels.TaxThresholdViewModel
 
 @{
     ViewData["Title"] = "Create";
 }
 <div class="shadow bg-light">
-    <h4 class="display-6 text-center p-2 bg-theme">Create a new Threshold</h4>
+    <h1 class="display-6 p-2 bg-white text-center">Add/Edit Threshold</h1>
+    <div class="p-2 overflow-auto">
+        <a class="text-primary text-decoration-none float-start" asp-action="Index">Go Back</a>
+        <a class="btn btn-success float-end" asp-action="ExtractFromSARS">Auto Fill With SARS Data</a>
+    </div>
     <form asp-action="Create" method="post">
-        <div class="row p-2">
-            <div class="col-12">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            </div>
-            <div class="col-12 col-lg-3">
-                <label asp-for="Year" class="control-label"></label>
-                <input asp-for="Year" class="form-control" />
-                <span asp-validation-for="Year" class="text-danger"></span>
-            </div>
-            <div class="col-12 col-lg-3">
-                <label asp-for="LowAge" class="control-label"></label>
-                <div class="input-group">
-                    <span class="p-1 bg-theme fw-bold">R</span>
-                    <input asp-for="LowAge" class="form-control" />
-                </div>
-                <span asp-validation-for="LowAge" class="text-danger"></span>
-            </div>
-            <div class="col-12 col-lg-3">
-                <label asp-for="MidAge" class="control-label"></label>
-                <div class="input-group">
-                    <span class="p-1 bg-theme fw-bold">R</span>
-                    <input asp-for="MidAge" class="form-control" />
-                </div>
-                <span asp-validation-for="MidAge" class="text-danger"></span>
-            </div>
-            <div class="col-12 col-lg-3">
-                <label asp-for="OldAge" class="control-label"></label>
-                <div class="input-group">
-                    <span class="p-1 bg-theme fw-bold">R</span>
-                    <input asp-for="OldAge" class="form-control" />
-                </div>
-                <span asp-validation-for="OldAge" class="text-danger"></span>
-            </div>
-            <div class="col-12 text-center pt-2 pb-2">
-                <button type="submit" class="btn btn-primary">
-                    Add Threshold
-                </button>
-            </div>
+        <table class="table">
+            <thead class="bg-theme">
+                <tr>
+                    <th>@Html.DisplayNameFor(m=>m.Threshold.Year)</th>
+                    <th>@Html.DisplayNameFor(m=>m.Threshold.LowAge)</th>
+                    <th>@Html.DisplayNameFor(m=>m.Threshold.MidAge)</th>
+                    <th>@Html.DisplayNameFor(m=>m.Threshold.OldAge)</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @Html.EditorFor(m=>m.ThresholdList)
+
+                <tr>
+                    <td>
+                        <input asp-for="@Model.Threshold.Year" class="form-control" value="0" />
+                        <span asp-validation-for="@Model.Threshold.Year" class="text-danger"></span>
+                    </td>
+                    <td>
+                        <input asp-for="@Model.Threshold.LowAge" class="form-control" value="0" />
+                        <span asp-validation-for="@Model.Threshold.LowAge" class="text-danger"></span>
+                    </td>
+                    <td>
+                        <input asp-for="@Model.Threshold.MidAge" class="form-control" value="0" />
+                        <span asp-validation-for="@Model.Threshold.MidAge" class="text-danger"></span>
+                    </td>
+                    <td>
+                        <input asp-for="@Model.Threshold.OldAge" class="form-control" value="0" />
+                        <span asp-validation-for="@Model.Threshold.OldAge" class="text-danger"></span>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="text-center">
+            <button class="btn btn-primary" type="submit">Apply Changes</button>
         </div>
     </form>
-
 </div>
 
 

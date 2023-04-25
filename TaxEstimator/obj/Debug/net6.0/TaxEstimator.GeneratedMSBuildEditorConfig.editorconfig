@@ -48,8 +48,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU0FSU1RocmVzaG9sZHNUYWJsZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/lenovo/Desktop/TaxEstimator/TaxEstimator/Areas/Admin/Views/Shared/EditorTemplates/Rebate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXEVkaXRvclRlbXBsYXRlc1xSZWJhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/lenovo/Desktop/TaxEstimator/TaxEstimator/Areas/Admin/Views/Shared/EditorTemplates/TaxBracket.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXEVkaXRvclRlbXBsYXRlc1xUYXhCcmFja2V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/lenovo/Desktop/TaxEstimator/TaxEstimator/Areas/Admin/Views/Shared/EditorTemplates/Threshold.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXEVkaXRvclRlbXBsYXRlc1xUaHJlc2hvbGQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/lenovo/Desktop/TaxEstimator/TaxEstimator/Areas/Admin/Views/Shared/Error.cshtml]

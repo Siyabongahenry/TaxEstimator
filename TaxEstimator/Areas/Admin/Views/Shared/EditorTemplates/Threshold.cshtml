@@ -1,0 +1,24 @@
+﻿@model TaxEstimator.Models.Threshold
+
+<tr>
+    <td>
+        <input asp-for="Id" type="hidden" />
+        <input asp-for="Year" class="form-control" />
+        <span asp-validation-for="Year" class="text-danger"></span>
+    </td>
+    <td>
+        <input asp-for="LowAge" class="form-control" />
+        <span asp-validation-for="LowAge" class="text-danger"></span>
+    </td>
+    <td>
+        <input asp-for="MidAge" class="form-control" />
+        <span asp-validation-for="MidAge" class="text-danger"></span>
+    </td>
+    <td>
+        <input asp-for="OldAge" class="form-control" />
+        <span asp-validation-for="OldAge" class="text-danger"></span>
+    </td>
+    <td>
+        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@Model.Id">Remove</a>
+    </td>
+</tr>
